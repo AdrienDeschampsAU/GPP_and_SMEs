@@ -29,10 +29,10 @@ rename legal_status_ind legal_status
 tostring siren, replace force
 encode siren, generate(siren_ind)
 drop siren
-rename siren_ind cae_siren
+rename siren_ind siren
 
 by contract_type, sort : logistic sme g_clause g_criterion g_weight advertising price_weight award_price allotment framework social_clause i.procedure_type i.legal_status i.month i.departement i.cpv [pweight = siren], vce(cluster id_contract) coef
 
-by contract_type, sort : logistic sme other_offers g_clause g_criterion g_weight advertising price_weight award_price allotment framework social_clause i.procedure_type i.legal_status i.month i.departement i.cpv [pweight = siren], vce(cluster id_contract) coef
+by contract_type, sort : logistic participation other_offers g_clause g_criterion g_weight advertising price_weight award_price allotment framework social_clause i.procedure_type i.legal_status i.month i.departement i.cpv [pweight = siren], vce(cluster id_contract) coef
 
 by contract_type, sort : logistic sme sme_ratio g_clause g_criterion g_weight advertising price_weight award_price allotment framework social_clause i.procedure_type i.legal_status i.month i.departement i.cpv [pweight = siren], vce(cluster id_contract) coef
