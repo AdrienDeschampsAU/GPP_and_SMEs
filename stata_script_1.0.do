@@ -1,3 +1,7 @@
+* 1) Manually import the csv file with default settings
+
+* 2) Run this section :
+
 tostring cpv, generate(cpv_str)
 drop cpv
 rename cpv_str cpv
@@ -29,10 +33,19 @@ rename legal_status_ind legal_status
 tostring siren, replace force
 encode siren, generate(siren_ind)
 drop siren
-rename siren_ind siren
+rename siren_ind cae_siren
+
+
+* 3) Run one of these three regressions according to the file imported
+
+* General effect :
 
 by contract_type, sort : logistic sme g_clause g_criterion g_weight advertising price_weight award_price allotment framework social_clause i.procedure_type i.legal_status i.month i.departement i.cpv [pweight = siren], vce(cluster id_contract) coef
 
-by contract_type, sort : logistic participation other_offers g_clause g_criterion g_weight advertising price_weight award_price allotment framework social_clause i.procedure_type i.legal_status i.month i.departement i.cpv [pweight = siren], vce(cluster id_contract) coef
+* Participation :
+
+by contract_type, sort : logistic sme other_offers g_clause g_criterion g_weight advertising price_weight award_price allotment framework social_clause i.procedure_type i.legal_status i.month i.departement i.cpv [pweight = siren], vce(cluster id_contract) coef
+
+* Success :
 
 by contract_type, sort : logistic sme sme_ratio g_clause g_criterion g_weight advertising price_weight award_price allotment framework social_clause i.procedure_type i.legal_status i.month i.departement i.cpv [pweight = siren], vce(cluster id_contract) coef
