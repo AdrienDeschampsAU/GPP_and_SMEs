@@ -1,9 +1,5 @@
-The file "general_sample_1.0.csv" is the sample for the general model.
-The file "participation_sample_1.0.csv" is the sample for the participation stage model.
-The file "success_sample_1.0.csv" is the sample for the success stage model.
+The file "sample_1.0.csv" is the dataset used in the paper.
 
-One of these three csv files has to be imported on Stata.
-
-The file "stata_script_1.0" can be used to replicate the regressions (full logit model with sample weighting for the general and participation stage models).
+The file "stata_script.do" can be used to replicate the different regressions and robustness checks.
 
 Current version : Stata 18.5
